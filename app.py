@@ -28,20 +28,3 @@ if scatter_button:
     # Mostrar el gráfico en Streamlit
     st.plotly_chart(fig_scatter, use_container_width=True)
 
-# Desafío extra: Usar casillas de verificación en lugar de botones
-build_histogram = st.checkbox('Construir un histograma')
-build_scatter = st.checkbox('Construir un gráfico de dispersión')
-
-# Acción para el histograma con casilla de verificación
-if build_histogram:
-    st.write('Construir un histograma para la columna odómetro')
-    # Crear el histograma
-    fig_hist_checkbox = px.histogram(car_data, x="odometer", title="Histograma del Odometer de los Vehículos")
-    st.plotly_chart(fig_hist_checkbox, use_container_width=True)
-
-# Acción para el gráfico de dispersión con casilla de verificación
-if build_scatter:
-    st.write('Construir un gráfico de dispersión para los vehículos')
-    # Crear el gráfico de dispersión
-    fig_scatter_checkbox = px.scatter(car_data, x="price", y="year", color="make", title="Gráfico de Dispersión de Precio vs Año")
-    st.plotly_chart(fig_scatter_checkbox, use_container_width=True)
