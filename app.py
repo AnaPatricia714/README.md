@@ -1,16 +1,47 @@
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-        
-car_data = pd.read_csv('vehicles_us.csv') # leer los datos
-hist_button = st.button('Construir histograma') # crear un botón
-        
-if hist_button: # al hacer clic en el botón
-    # escribir un mensaje
+
+# Cargar los datos (suponiendo que tienes el archivo 'vehicles_us.csv' en tu directorio)
+car_data = pd.read_csv('vehicles_us.csv')
+
+# Agregar un encabezado
+st.header('Análisis de Vehículos de Estados Unidos')
+
+# Crear los botones para generar gráficos
+hist_button = st.button('Construir histograma')
+scatter_button = st.button('Construir gráfico de dispersión')
+
+# Acción para el histograma
+if hist_button:
     st.write('Creación de un histograma para el conjunto de datos de anuncios de venta de coches')
-            
-    # crear un histograma
-    fig = px.histogram(car_data, x="odometer")
-        
-    # mostrar un gráfico Plotly interactivo
-    st.plotly_chart(fig, use_container_width=True)
+    # Crear un histograma con Plotly Express
+    fig_hist = px.histogram(car_data, x="odometer", title="Histograma del Odometer de los Vehículos")
+    # Mostrar el gráfico en Streamlit
+    st.plotly_chart(fig_hist, use_container_width=True)
+
+# Acción para el gráfico de dispersión
+if scatter_button:
+    st.write('Creación de un gráfico de dispersión para los vehículos')
+    # Crear un gráfico de dispersión con Plotly Express
+    fig_scatter = px.scatter(car_data, x="price", y="year", color="make", title="Gráfico de Dispersión de Precio vs Año")
+    # Mostrar el gráfico en Streamlit
+    st.plotly_chart(fig_scatter, use_container_width=True)
+
+# Desafío extra: Usar casillas de verificación en lugar de botones
+build_histogram = st.checkbox('Construir un histograma')
+build_scatter = st.checkbox('Construir un gráfico de dispersión')
+
+# Acción para el histograma con casilla de verificación
+if build_histogram:
+    st.write('Construir un histograma para la columna odómetro')
+    # Crear el histograma
+    fig_hist_checkbox = px.histogram(car_data, x="odometer", title="Histograma del Odometer de los Vehículos")
+    st.plotly_chart(fig_hist_checkbox, use_container_width=True)
+
+# Acción para el gráfico de dispersión con casilla de verificación
+if build_scatter:
+    st.write('Construir un gráfico de dispersión para los vehículos')
+    # Crear el gráfico de dispersión
+    fig_scatter_checkbox = px.scatter(car_data, x="price", y="year", color="make", title="Gráfico de Dispersión de Precio vs Año")
+    st.plotly_chart(fig_scatter_checkbox, use_container_width=True)
