@@ -21,6 +21,3 @@ Para ejecutar esta aplicación en tu máquina local, necesitarás tener instalad
 - **Pandas**: Para manejar y analizar los datos.
 - **Plotly**: Para crear gráficos interactivos.
 
-Tu puedes también visualizar tu Streamlit app en tu navegador mediante:
-  Local URL: http://localhost:8501
-  Network URL: http://192.168.0.159:8501
