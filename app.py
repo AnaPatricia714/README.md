@@ -24,7 +24,7 @@ if hist_button:
 if scatter_button:
     st.write('Creación de un gráfico de dispersión para los vehículos')
     # Crear un gráfico de dispersión con Plotly Express
-    fig_scatter = px.scatter(car_data, x="odometer", y="price", color="make", title="Gráfico de Dispersión de Odómetro vs Precio")
+    fig_scatter = px.scatter(car_data, x="odometer", y="price", title="Gráfico de Dispersión de Odómetro vs Precio")
     # Mostrar el gráfico en Streamlit
     st.plotly_chart(fig_scatter, use_container_width=True)
 
